@@ -19,8 +19,8 @@
 		<div class="row">
 			<div class="col"></div>
 			<div class="col">
-				Register Here First sdsd
-				<form:form action="/save" method="post" modelAttribute="regDetails">
+				
+				<form:form action="/mvc/save" method="post" modelAttribute="regDetails">
 				<table>
 				<tr>
 				<td><label>Name:</label></td>

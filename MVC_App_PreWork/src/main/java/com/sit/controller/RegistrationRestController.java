@@ -39,6 +39,12 @@ public class RegistrationRestController {
 		return service.getAllDetails();
 	}
 
+	@GetMapping("/pagination/{pageNo}/{size}")
+	public List<RegistrationDetails> getByPagination(@PathVariable("pageNo") Integer pageNo,
+			@PathVariable("size") Integer size) {
+		return service.getByPagination(pageNo, size);
+	}
+
 	public RegistrationDetails updateRegistratinoDetails(@RequestAttribute RegistrationDetails details) {
 		return service.updateRegistratinoDetails();
 	}
