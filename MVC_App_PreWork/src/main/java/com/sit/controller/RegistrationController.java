@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sit.entity.RegistrationDetails;
 import com.sit.service.RegistrationService;
-
+@RequestMapping("/mvc")
 @Controller
 public class RegistrationController {
 
