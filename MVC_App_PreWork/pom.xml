@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.17</version>
+		<version>3.0.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sit</groupId>
@@ -21,11 +21,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-<dependency>
-			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
-			<version>12.2.0.1</version>
-		</dependency>
+			<dependency>
+						<groupId>com.oracle.database.jdbc</groupId>
+						<artifactId>ojdbc8</artifactId>
+						<version>12.2.0.1</version>
+					</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -37,36 +37,26 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<!-- JSTL for JSP -->
-        <dependency>
+
+<!-- <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-        </dependency>
+            <version>1.2</version>
+        </dependency>-->
  
+ <dependency>
+    <groupId>org.glassfish.web</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+    <version>2.0.0</version>
+</dependency>
+
         <!-- For JSP compilation -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>	
-        
-       <!-- <dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>bootstrap</artifactId>
-    <version>3.3.6</version>
-</dependency>
-
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>bootstrap-datepicker</artifactId>
-    <version>1.0.1</version>
-</dependency>
-
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>jquery</artifactId>
-    <version>1.9.1</version>
-</dependency>	-->
+   
 
 <dependency>
     <groupId>org.webjars</groupId>

@@ -1,18 +1,19 @@
 package com.sit.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sit.entity.RegistrationDetails;
 import com.sit.service.RegistrationService;
+
 @RequestMapping("/mvc")
 @Controller
-public class RegistrationController {
+public class RegistrationWebController {
 
 	@Autowired
 	private RegistrationService service;
@@ -21,30 +22,29 @@ public class RegistrationController {
 	@RequestMapping("/loadRegForm")
 	public ModelAndView loadRegForm() {
 		ModelAndView mav = new ModelAndView();
-		// set page name
 		mav.setViewName("RegForm");
-		// set data
 		RegistrationDetails registrationDetails = new RegistrationDetails();
-		registrationDetails.setContact(32);
 		mav.addObject("regDetails", registrationDetails);
 		return mav;
 	}
 
 	@RequestMapping("/save")
-	public ModelAndView saveRegistrationDetails(@ModelAttribute RegistrationDetails details) {
-		System.out.println("Details comming from UI" + details);
-		// save the details
+	public String saveRegistrationDetails(@ModelAttribute RegistrationDetails details) {
 		RegistrationDetails savedDetails = service.saveRegistratinoDetails(details);
-		System.out.println("Saved details:::" + savedDetails);
-
 		String name = savedDetails.getPersonName();
-
 		ModelAndView mav = new ModelAndView();
-		// set page name
 		mav.setViewName("Response");
-		// set data
 		mav.addObject("nameOfPerson", name);
 		mav.addObject("regDetails", savedDetails);
+		return "redirect:pagination/0/10";
+	}
+
+	@RequestMapping("/showTable")
+	public ModelAndView showTable() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", service.getAllDetails());
+		mav.addObject("naam", "Naaja");
+		mav.setViewName("Records");
 		return mav;
 	}
 
@@ -56,7 +56,12 @@ public class RegistrationController {
 		service.deleteRegistratinoDetailsByID(id);
 	}
 
-	public List<RegistrationDetails> getAllDetails() {
-		return service.getAllDetails();
+	@GetMapping("/pagination/{pageNo}/{size}")
+	public ModelAndView getByPagination(@PathVariable("pageNo") Integer pageNo, @PathVariable("size") Integer size) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", service.getByPagination(pageNo, size));
+		mav.addObject("naam", "Naaja");
+		mav.setViewName("Records");
+		return mav;
 	}
 }

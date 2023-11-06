@@ -1,17 +1,17 @@
 package com.sit.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+//import javax.persistence.Column;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+//import javax.persistence.Table;
+import jakarta.persistence.*;
 @Entity
-@Table(name = "reg_details")
+@Table(name = "regDetails")
 public class RegistrationDetails {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO )// automatically create it for person_id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE )// automatically create it for person_id
 	@Column(name = "person_id")
 	private Integer personID;
 	@Column(name = "person_age")
