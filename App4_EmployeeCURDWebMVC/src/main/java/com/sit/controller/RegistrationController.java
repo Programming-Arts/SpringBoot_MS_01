@@ -47,9 +47,7 @@ public class RegistrationController {
 		return mav;
 	}
 
-	public RegistrationDetails updateRegistratinoDetails() {
-		return null;
-	}
+	
 
 	public void deleteRegistratinoDetailsByID(Integer id) {
 		service.deleteRegistratinoDetailsByID(id);
