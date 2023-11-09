@@ -11,15 +11,19 @@ import javax.persistence.Table;
 @Table(name = "reg_details")
 public class RegistrationDetails {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)// automatically create it for person_id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE) // automatically create it for person_id
 	@Column(name = "person_id")
 	private Integer personID;
+	
 	@Column(name = "person_age")
 	private Integer personAge;
+	
 	@Column(name = "contact")
 	private Integer contact;
+	
 	@Column(name = "person_name")
 	private String personName;
+	
 	@Column(name = "person_email")
 	private String email;
 
