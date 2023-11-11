@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col"></div>
 			<div class="col">
-				Register Here First sdsd
+				Register Here First
 				<form:form action="/save" method="post" modelAttribute="regDetails">
 				<table>
 				<tr>
