@@ -25,10 +25,6 @@ public class LoginController {
 		return modelAndView;
 	}
 
-//	@RequestMapping("/loadForm")
-//	public String loadLoginForm() {
-//		return "LoginForm";
-//	}
 
 	@RequestMapping("/login")
 	public ModelAndView login(@ModelAttribute PersonDetails details) {
