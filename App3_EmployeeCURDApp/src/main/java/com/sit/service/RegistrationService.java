@@ -36,4 +36,9 @@ public class RegistrationService {
 		Optional<RegistrationDetails> optionaDetails = repo.findById(id);
 		return optionaDetails.get();
 	}
+	
+	
+	public RegistrationDetails getByName(String personName) {
+		return null;
+	}
 }
