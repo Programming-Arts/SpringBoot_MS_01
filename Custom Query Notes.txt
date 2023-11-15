@@ -1,0 +1,35 @@
+Custom queries: these are used when we have no predefined method in CURD/JPARepository according to our requirement.
+Ex: 
+getByName, getByEmail 
+
+
+Custom queries are written in two ways
+1. using native query (SQL query)
+2. using HQL (Hibernate query language): We use java class name to refer db table and java class properties to refer DB column.
+3. using predefined keyword
+
+
+1. using native query (SQL query)
+steps:
+
+write abstract method in repository interface
+use @Query annotation with 2 attribute value and nativeQuery
+value : used to write SQL/HQL
+nativeQuery : used to mention the query is HQL or SQL
+
+we can send parameters to SQL query using @Param annotation
+type of parameters:
+1. Positional parameter
+here permeters are fetched using index or position. Here we dont need @Param annotation.
+Positional parameter is created using ? symbol along with position of parameter in the abstract method. 
+
+
+
+2. Named Parameter
+Ex: @Query(value = "select * from reg_details where person_name like :nameOfPerson", nativeQuery = true)
+	RegistrationDetails getDetailsBasedOnName(@Param("nameOfPerson") String name);
+
+we can send mulitpleparameters to SQL query. Ex:
+@Query(value = "select * from reg_details where person_name like :nameOfPerson or contact = :mobNo", nativeQuery = true)
+List<RegistrationDetails> getDetailsBasedOnNameandContact(@Param("nameOfPerson") String name,@Param("mobNo") Integer contact);
+
