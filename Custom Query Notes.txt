@@ -56,12 +56,43 @@ private int registraitonId;
 
 3. Using predefined keywords
 ------------------------------------------------
-We have to use below keywords while defining avstract method in an interface.
+We have to use below keywords while defining abstract method in repository.
 
 general keywords:
-
 find…By, read…By, get…By, query…By, search…By, stream…By
 count...By, delete…By, remove…By,
 
 Logical keywords:
 AND OR, AFTER, BEFORE,CONTAINING, BETWEEN, ENDING_WITH,EXISTS, GREATER_THAN,  GREATER_THAN_EQUALS,IN
+
+
+when we have to get all records by any column, we should use findBy(as a one word) keyword along with variable name like contact. 
+Ex:
+List<RegistrationDetails> findRegistrationDetailsByContact(Integer contact);
+
+If we want records based on some condition, we should use find keyword and By keyword seperately like below.
+Ex:
+List<RegistrationDetails> findRegistrationDetailsByContact(Integer contact);
+
+When we are pasing any column name in method definition, we can use AND, OR keyword
+Ex: List<RegistrationDetails> findRegistrationDetailsByContactAndEmail(Integer contact,String email);
+
+We can use logical keywords when we have to check mulitple conditions
+
+Ex:
+//select * from reg_details where person_id between 10 and 20;
+	List<RegistrationDetails> findRegistrationDetailsByPersonIDBetween(Integer id1,Integer id2);	
+
+@Repository
+public interface RegistrationRepo extends JpaRepository<RegistrationDetails, Integer> {
+	//using predefined keywords
+	List<RegistrationDetails> findByContact(Integer contact);
+	List<RegistrationDetails> findRegistrationDetailsByContactAndEmail(Integer contact,String email);
+	List<RegistrationDetails> findRegistrationDetailsByEmailContaining(String email);
+	
+	//select * from reg_details where person_id in (10,20); // SQL
+	List<RegistrationDetails> findRegistrationDetailsByPersonIDIn(List<Integer> ids);
+	
+	
+
+}
