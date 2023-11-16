@@ -23,11 +23,25 @@ public interface RegistrationRepo extends JpaRepository<RegistrationDetails, Int
 //	List<RegistrationDetails> getDetailsBasedOnNameandContact(@Param("nameOfPerson") String name,
 //			@Param("mobNo") Integer contact);
 
+
+//	// positional parameters
+//	@Query(value = "select * from reg_details where person_name like ?1", nativeQuery = true)
+//	RegistrationDetails getDetailsBasedOnName(String name);
+//	
+//	@Query(value = "select * from reg_details where person_name like ?2 or contact = ?1", nativeQuery = true)
+//	List<RegistrationDetails> getDetailsBasedOnNameandContact(Integer contact,String name);
 	
-	@Query(value = "select * from reg_details where person_name like ?1", nativeQuery = true)
-	RegistrationDetails getDetailsBasedOnName(String name);
+	//using predefined keywords
+	List<RegistrationDetails> findByContact(Integer contact);
+	List<RegistrationDetails> findRegistrationDetailsByContactAndEmail(Integer contact,String email);
+	List<RegistrationDetails> findRegistrationDetailsByEmailContaining(String email);
 	
-	@Query(value = "select * from reg_details where person_name like ?2 or contact = ?1", nativeQuery = true)
-	List<RegistrationDetails> getDetailsBasedOnNameandContact(Integer contact,String name);
+	//select * from reg_details where person_id in (10,20); // SQL
+	List<RegistrationDetails> findRegistrationDetailsByPersonIDIn(List<Integer> ids);
+	
+//	select * from reg_details where person_id between 10 and 20;
+	List<RegistrationDetails> findRegistrationDetailsByPersonIDBetween(Integer id1,Integer id2);
+	
+	
 
 }

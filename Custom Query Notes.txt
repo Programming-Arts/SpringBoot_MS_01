@@ -3,7 +3,7 @@ Ex:
 getByName, getByEmail 
 
 
-Custom queries are written in two ways
+Custom queries are written in 3 ways
 1. using native query (SQL query)
 2. using HQL (Hibernate query language): We use java class name to refer db table and java class properties to refer DB column.
 3. using predefined keyword
@@ -23,13 +23,45 @@ type of parameters:
 here permeters are fetched using index or position. Here we dont need @Param annotation.
 Positional parameter is created using ? symbol along with position of parameter in the abstract method. 
 
-
-
 2. Named Parameter
 Ex: @Query(value = "select * from reg_details where person_name like :nameOfPerson", nativeQuery = true)
 	RegistrationDetails getDetailsBasedOnName(@Param("nameOfPerson") String name);
 
-we can send mulitpleparameters to SQL query. Ex:
+we can send mulitpleparameters to SQL query. 
+Ex:
 @Query(value = "select * from reg_details where person_name like :nameOfPerson or contact = :mobNo", nativeQuery = true)
 List<RegistrationDetails> getDetailsBasedOnNameandContact(@Param("nameOfPerson") String name,@Param("mobNo") Integer contact);
 
+
+---------------------------------------------------------------------------------------------------------------------------------
+2. using HQL (Hibernate query language)
+---------------------------------------------------------------------------------------------------------------------------------
+Here we write write a query using java class name and class variables.
+It is Database independent language. We no need to bother about type of database we are using.
+
+
+database table  => java/entity class name
+dtabase column name  => java class variable name
+
+ex:
+SQL:> select * from reg_details where reg_id = 12;
+HQL:> select * from RegistrationDetails where registraitonId = 12;
+
+class RegistrationDetails{
+
+private int registraitonId;
+
+}
+
+
+3. Using predefined keywords
+------------------------------------------------
+We have to use below keywords while defining avstract method in an interface.
+
+general keywords:
+
+find…By, read…By, get…By, query…By, search…By, stream…By
+count...By, delete…By, remove…By,
+
+Logical keywords:
+AND OR, AFTER, BEFORE,CONTAINING, BETWEEN, ENDING_WITH,EXISTS, GREATER_THAN,  GREATER_THAN_EQUALS,IN
