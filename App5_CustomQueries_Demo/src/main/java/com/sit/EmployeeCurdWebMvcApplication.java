@@ -43,6 +43,9 @@ public class EmployeeCurdWebMvcApplication implements CommandLineRunner {
 //			System.out.println(
 //					obj.getPersonName() + " " + obj.getEmail() + " " + obj.getContact() + " " + obj.getPersonAge());
 //		});
+		
+		RegistrationDetails obj=repo.getDetailsBasedOnAge(100);
+		System.out.println(obj);
 
 	}
 

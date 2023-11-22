@@ -41,6 +41,10 @@ public interface RegistrationRepo extends JpaRepository<RegistrationDetails, Int
 	
 //	select * from reg_details where person_id between 10 and 20;
 //	List<RegistrationDetails> findRegistrationDetailsByPersonIDBetween(Integer id1,Integer id2);
+	
+	
+	@Query(value = "select RegistrationDetails  where personAge = ?1",nativeQuery = false)
+	RegistrationDetails getDetailsBasedOnAge(Integer age);
 
 	
 	
