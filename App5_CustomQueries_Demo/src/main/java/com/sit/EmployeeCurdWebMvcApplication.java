@@ -36,12 +36,13 @@ public class EmployeeCurdWebMvcApplication implements CommandLineRunner {
 		ids.add(10);
 		ids.add(20);
 //		List<RegistrationDetails> list = repo.findRegistrationDetailsByPersonIDIn(ids);
-		List<RegistrationDetails> list = repo.findRegistrationDetailsByPersonIDBetween(10,20);
-		list.stream().forEach(obj -> {
 
-			System.out.println(
-					obj.getPersonName() + " " + obj.getEmail() + " " + obj.getContact() + " " + obj.getPersonAge());
-		});
+
+//		list.stream().forEach(obj -> {
+//
+//			System.out.println(
+//					obj.getPersonName() + " " + obj.getEmail() + " " + obj.getContact() + " " + obj.getPersonAge());
+//		});
 
 	}
 

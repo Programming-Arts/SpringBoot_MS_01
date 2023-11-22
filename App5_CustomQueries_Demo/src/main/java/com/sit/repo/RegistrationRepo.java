@@ -40,7 +40,11 @@ public interface RegistrationRepo extends JpaRepository<RegistrationDetails, Int
 	List<RegistrationDetails> findRegistrationDetailsByPersonIDIn(List<Integer> ids);
 	
 //	select * from reg_details where person_id between 10 and 20;
-	List<RegistrationDetails> findRegistrationDetailsByPersonIDBetween(Integer id1,Integer id2);
+//	List<RegistrationDetails> findRegistrationDetailsByPersonIDBetween(Integer id1,Integer id2);
+
+	
+	
+
 	
 	
 
