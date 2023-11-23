@@ -43,7 +43,7 @@ public interface RegistrationRepo extends JpaRepository<RegistrationDetails, Int
 //	List<RegistrationDetails> findRegistrationDetailsByPersonIDBetween(Integer id1,Integer id2);
 	
 	
-	@Query(value = "select RegistrationDetails  where personAge = ?1",nativeQuery = false)
+	@Query(value = "select rg from RegistrationDetails  rg where rg.personAge = :age",nativeQuery = false)
 	RegistrationDetails getDetailsBasedOnAge(Integer age);
 
 	
