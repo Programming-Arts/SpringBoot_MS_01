@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MyController {
+
     //: http://localhost:9080/getName
     @RequestMapping("/getName")
     public String getName() {

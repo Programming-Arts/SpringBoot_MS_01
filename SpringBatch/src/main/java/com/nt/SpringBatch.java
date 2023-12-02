@@ -29,6 +29,7 @@ public class SpringBatch implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("Names length: "+repo.findAll().size());
         JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
                 .toJobParameters();
         jobLauncher.run(processJob, jobParameters);
